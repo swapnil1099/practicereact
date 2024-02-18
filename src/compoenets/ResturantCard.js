@@ -7,7 +7,8 @@ function ResturantCard({resData}){
       <h4>{resData.info.name}</h4>
       <h5>{resData.info.cuisines.join(" , ")}</h5>
       <h5>Rating:{resData.info.avgRating} stars</h5>
-      <h5>DeliveryTime:{resData.info.sla.deliveryTime}</h5>
+      <p>DeliveryTime:{resData.info.sla.deliveryTime}</p>
+      <p>costForTwo:{resData.info.costForTwo}</p>
     </div>
   );
 };
