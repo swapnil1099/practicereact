@@ -1017,6 +1017,7 @@ const resList = [
         text: "RESTAURANT_MENU",
         type: "DEEPLINK",
       },
+      
     },
   ];
 export default resList;
