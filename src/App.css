@@ -113,3 +113,19 @@
   margin: 10px;
   cursor: pointer;
 }
+
+.filter{
+  display: flex;
+  
+}
+.search-box{
+  margin: 2px;
+}
+.search-bt{
+  margin: 2px;
+}
+
+.filter-div{
+  margin: 2px;
+
+}
