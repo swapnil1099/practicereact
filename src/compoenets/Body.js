@@ -14,7 +14,7 @@ const Body = () => {
 
 
     const fetchData = async () => {
-        const data = await fetch("https://www.swiggy.com/mapi/homepage/getCards?lat=18.5204303&lng=73.8567437")
+        const data = await fetch("https://www.swiggy.com/mapi/homepage/getCards?lat=18.6204303&lng=73.8567437")
         const json = await data.json();
         setList(json?.data?.success?.cards[1]?.gridWidget?.gridElements?.infoWithStyle?.restaurants);
         setnewresList(json?.data?.success?.cards[1]?.gridWidget?.gridElements?.infoWithStyle?.restaurants);
@@ -32,6 +32,7 @@ const Body = () => {
                     }} />
                     <button className="search-bt" onClick={() => {
                         const searchlist = list.filter((res1) => (res1.info.name.toLowerCase().includes(searchText.toLowerCase())));
+                        
                         setnewresList(searchlist);
 
                     }}>search</button>
