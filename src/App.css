@@ -129,3 +129,15 @@
   margin: 2px;
 
 }
+
+.Menucard{
+  border: #282c34;
+  width: 600px;
+  height: 600px;
+  margin: 100px;
+}
+
+.photocardmenu{
+  width: 100px;
+  height: 100px;
+}
