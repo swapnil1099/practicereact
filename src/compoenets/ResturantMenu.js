@@ -1,28 +1,19 @@
-import React, { useState } from 'react'
-import { useEffect } from 'react'
+import React from 'react'
+import useResturantMenu from '../utils/useResturantMenu';
 import Shimmer from './Shimmer';
 import { useParams } from 'react-router';
 const ResturantMenu = () => {
-const [resinfo,stateresinfo]=useState([]);
+//const [resinfo,stateresinfo]=useState([]);
 
 const {resId}=useParams();
 
-  useEffect(()=>{
-    fetchMenu();
-  });
+  
 
+  const resinfo=useResturantMenu(resId);
 
 //const cardlink="https://www.swiggy.com/mapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=18.5304303&lng=73.8567437&restaurantId=";
 
- async function fetchMenu(){
-   const datajson = await fetch("https://www.swiggy.com/mapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=18.5304303&lng=73.8567437&restaurantId="+resId);
- 
-   const data=await datajson.json();
 
-   stateresinfo(data);
-
-  
- }
  
 if(resinfo.length!==0){
   var {name,cloudinaryImageId,costForTwoMessage,cuisines}=resinfo?.data?.cards[2]?.card?.card?.info;
@@ -47,8 +38,9 @@ if(resinfo.length!==0){
         <h3>Menu</h3>
 
       <ul>
+    
       {itemCards?.map((item) => (
-    <li key={item.card.info.id}>{item.card.info.name} - ₹ {item.card.info.price / 100}</li>
+    <li key={item.card.info.id}>{item.card.info.name} - ₹ {(item.card.info.price / 100) || 299}</li>
 ))}
         
       </ul>
