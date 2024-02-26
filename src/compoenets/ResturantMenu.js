@@ -6,7 +6,6 @@ const ResturantMenu = () => {
 const [resinfo,stateresinfo]=useState([]);
 
 const {resId}=useParams();
-console.log(resId)
 
   useEffect(()=>{
     fetchMenu();
