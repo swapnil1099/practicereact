@@ -5,6 +5,8 @@ import { useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
 
+import useOnlineStatus from "../utils/useOnlineStatus";
+
 const Body = () => {
     const [newresList, setnewresList] = useState([]);
     const [searchText, SetSearchText] = useState("");
@@ -12,7 +14,15 @@ const Body = () => {
     useEffect(() => {
         fetchData();
     }, []);
-
+    
+  const onlinestatus=useOnlineStatus();
+  if(onlinestatus===false){
+    return(
+        <div>
+            <h1>You are offline Check Your intert connection</h1>
+        </div>
+    )
+  }
 
     const fetchData = async () => {
         const data = await fetch("https://www.swiggy.com/mapi/restaurants/list/v5?offset=0&is-seo-homepage-enabled=true&lat=18.5204303&lng=73.8567437")
