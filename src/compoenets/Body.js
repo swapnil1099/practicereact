@@ -8,14 +8,14 @@ import { Link } from "react-router-dom";
 const Body = () => {
     const [newresList, setnewresList] = useState([]);
     const [searchText, SetSearchText] = useState("");
-    const [list,setList]=useState([]);
+    const [list, setList] = useState([]);
     useEffect(() => {
         fetchData();
     }, []);
 
 
     const fetchData = async () => {
-        const data = await fetch("https://www.swiggy.com/mapi/homepage/getCards?lat=18.5704303&lng=73.8567437")
+        const data = await fetch("https://www.swiggy.com/mapi/homepage/getCards?lat=18.5204303&lng=73.8567437")
         const json = await data.json();
         setList(json?.data?.success?.cards[1]?.gridWidget?.gridElements?.infoWithStyle?.restaurants);
         setnewresList(json?.data?.success?.cards[1]?.gridWidget?.gridElements?.infoWithStyle?.restaurants);
@@ -33,7 +33,7 @@ const Body = () => {
                     }} />
                     <button className="search-bt" onClick={() => {
                         const searchlist = list.filter((res1) => (res1.info.name.toLowerCase().includes(searchText.toLowerCase())));
-                        
+
                         setnewresList(searchlist);
 
                     }}>search</button>
@@ -55,8 +55,8 @@ const Body = () => {
 
 
 
-                {newresList.map((restaurant) => (<Link to={"/resturants/"+restaurant.info.id} key={restaurant.info.id}>
-                <ResturantCard resData={restaurant}   /></Link>))}
+                {newresList.map((restaurant) => (<Link to={"/resturants/" + restaurant.info.id} key={restaurant.info.id}>
+                    <ResturantCard resData={restaurant} /></Link>))}
 
             </div>
         </div>
