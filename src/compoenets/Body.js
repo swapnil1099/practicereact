@@ -15,13 +15,22 @@ const Body = () => {
 
 
     const fetchData = async () => {
-        const data = await fetch("https://www.swiggy.com/mapi/homepage/getCards?lat=18.5204303&lng=73.8567437")
+        const data = await fetch("https://www.swiggy.com/mapi/restaurants/list/v5?offset=0&is-seo-homepage-enabled=true&lat=18.5204303&lng=73.8567437")
         const json = await data.json();
-        setList(json?.data?.success?.cards[1]?.gridWidget?.gridElements?.infoWithStyle?.restaurants);
-        setnewresList(json?.data?.success?.cards[1]?.gridWidget?.gridElements?.infoWithStyle?.restaurants);
+        // setList(json?.data?.success?.cards[1]?.gridWidget?.gridElements?.infoWithStyle?.restaurants);
+        // setnewresList(json?.data?.success?.cards[1]?.gridWidget?.gridElements?.infoWithStyle?.restaurants);
+        // console.log(json)
+        setList(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+        // console.log(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
+        setnewresList(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+        
+        
+
 
     }
 
+    
+    
 
 
     return newresList.length === 0 ? <Shimmer /> : (
