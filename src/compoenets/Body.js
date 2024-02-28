@@ -25,7 +25,7 @@ const Body = () => {
   }
 
     const fetchData = async () => {
-        const data = await fetch("https://www.swiggy.com/mapi/restaurants/list/v5?offset=0&is-seo-homepage-enabled=true&lat=18.5204303&lng=73.8567437")
+        const data = await fetch("https://www.swiggy.com/mapi/restaurants/list/v5?offset=0&is-seo-homepage-enabled=true&lat=18.6404303&lng=73.8567437")
         const json = await data.json();
         // setList(json?.data?.success?.cards[1]?.gridWidget?.gridElements?.infoWithStyle?.restaurants);
         // setnewresList(json?.data?.success?.cards[1]?.gridWidget?.gridElements?.infoWithStyle?.restaurants);
@@ -45,12 +45,12 @@ const Body = () => {
 
     return newresList.length === 0 ? <Shimmer /> : (
         <div className="body">
-            <div className="filter">
-                <div className="search-box">
-                    <input className="search-box" value={searchText} onChange={(e) => {
+            <div className="flex">
+                <div className="search m-4 p-4">
+                    <input className="border border-solid border-black m-4 py-1 rounded-lg" value={searchText} onChange={(e) => {
                         SetSearchText(e.target.value)
                     }} />
-                    <button className="search-bt" onClick={() => {
+                    <button className="px-4 py-1 m-4 bg-green-100 rounded-lg" onClick={() => {
                         const searchlist = list.filter((res1) => (res1.info.name.toLowerCase().includes(searchText.toLowerCase())));
 
                         setnewresList(searchlist);
@@ -58,8 +58,10 @@ const Body = () => {
                     }}>search</button>
 
                 </div>
-                <div className="filter-div">
-                    <button className="filter-res" onClick={() => {
+
+                
+                <div className="search m-4 p-4">
+                    <button className="px-4 py-1 m-4 bg-gray-100 rounded-lg" onClick={() => {
                         const filterList = newresList.filter((rest) => (rest.info.avgRating > 4))
                         setnewresList(filterList);
                     }}>
@@ -69,8 +71,10 @@ const Body = () => {
                     </button>
 
                 </div>
+            
+                
             </div>
-            <div className="res-container">
+            <div className="flex flex-wrap">
 
 
 
