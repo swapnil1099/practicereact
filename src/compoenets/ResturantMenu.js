@@ -28,25 +28,27 @@ const ResturantMenu = () => {
 
   return resinfo.length === 0 ? <Shimmer /> : (
 
-    <div className="m-4 p-4 w-50% rounded-lg bg-gray-100 ">
-      <img alt='menuphoto' className='m-4 p-4 size-30' src={"https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,h_600/" + cloudinaryImageId} ></img>
-      <h1 className='m-4 p-4 px-20 font-bold'>{name}</h1>
+    <div >
+      <div className="m-4 p-4 w-[600px] rounded-lg bg-gray-100 grid h-screen place-items-center text-center">
+        <img alt='menuphoto' className='m-4 p-4 size-40' src={"https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,h_600/" + cloudinaryImageId} ></img>
+        <h1 className='m-4 p-4 font-bold'>{name}</h1>
 
-      <h2 >{cuisines.join(" ,")}</h2>
+        <h2 className=''>{cuisines.join(" ,")}</h2>
 
-      <h3>{costForTwoMessage}</h3>
-      <h3>Menu</h3>
+        <h3>{costForTwoMessage}</h3>
+        <h3>Menu</h3>
 
-      <ul>
+        <ul>
 
-        {itemCards?.map((item) => (
-          <li key={item.card.info.id}>{item.card.info.name} - ₹ {(item.card.info.price / 100) || 299}</li>
-        ))}
+          {itemCards?.map((item) => (
+            <li key={item.card.info.id}>{item.card.info.name} - ₹ {(item.card.info.price / 100) || 299}</li>
+          ))}
 
-      </ul>
+        </ul>
 
 
 
+      </div>
     </div>
   )
 }

@@ -2,8 +2,12 @@ import React from 'react'
 
 const Contact = () => {
   return (
+    <div className='m-4 p-4  border-solid border-2 border-black-600 border-red-100'>
+    <div   className='m-4 p-4  border-double  border-2 border-black-600 bg-gray-50  text-center'>
     <div>
-      <h1>This is Contact Page</h1>
+      <h1 className='font-bold'>This is Contact Page</h1>
+    </div>
+    </div>
     </div>
   )
 }

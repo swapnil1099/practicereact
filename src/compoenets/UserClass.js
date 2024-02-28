@@ -5,18 +5,18 @@ class UserClass extends React.Component {
 
         super(props);
 
-       
+
     }
 
     render() {
-    
+
         return (
 
-            <div>
-                <h3>THIS IS ABOUT SECTION</h3>
+            <div className="font-semibold">
+                <h3 className="transition-colors">THIS IS ABOUT SECTION</h3>
                 <h5>Created BY : - {this.props.name}</h5>
-                
-                
+
+
             </div>
         );
     }
