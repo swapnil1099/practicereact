@@ -2,6 +2,7 @@ import React from 'react'
 import useResturantMenu from '../utils/useResturantMenu';
 import Shimmer from './Shimmer';
 import { useParams } from 'react-router';
+import ResturantCategory from './ResturantCategory';
 const ResturantMenu = () => {
   //const [resinfo,stateresinfo]=useState([]);
 
@@ -16,10 +17,18 @@ const ResturantMenu = () => {
 
 
   if (resinfo.length !== 0) {
-    var { name, cloudinaryImageId, costForTwoMessage, cuisines } = resinfo?.data?.cards[2]?.card?.card?.info;
-    var { itemCards } = resinfo.data.cards[5].groupedCard?.cardGroupMap?.REGULAR.cards[1]?.card?.card;
+    var { name, costForTwoMessage, cuisines } = resinfo?.data?.cards[2]?.card?.card?.info;
+    // var { itemCards } = resinfo.data.cards[5].groupedCard?.cardGroupMap?.REGULAR.cards[1]?.card?.card;
+  //  console.log(resinfo.data.cards[5].groupedCard?.cardGroupMap?.REGULAR.cards)
+  var categories=resinfo.data.cards[5].groupedCard?.cardGroupMap?.REGULAR.cards.filter((c)=>c.card?.["card"]?.["@type"]==="type.googleapis.com/swiggy.presentation.food.v2.ItemCategory")
+
+  // console.log(categories)
+   
 
   }
+  
+  
+ 
 
 
 
@@ -29,22 +38,19 @@ const ResturantMenu = () => {
   return resinfo.length === 0 ? <Shimmer /> : (
 
     <div >
-      <div className="m-4 p-4 w-[600px] rounded-lg bg-gray-100 grid h-screen place-items-center text-center">
-        <img alt='menuphoto' className='m-4 p-4 size-40' src={"https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,h_600/" + cloudinaryImageId} ></img>
-        <h1 className='m-4 p-4 font-bold'>{name}</h1>
+      <div className="text-center">
+        {/* <img alt='menuphoto' className='m-4 p-4 size-40' src={"https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,h_600/" + cloudinaryImageId} ></img> */}
+        <h1 className='m-4 p-4 font-bold text-2xl'>{name}</h1>
 
-        <h2 className=''>{cuisines.join(" ,")}</h2>
+        <h2 className='font-bold'>{cuisines.join(" ,")}  {costForTwoMessage}</h2>
 
-        <h3>{costForTwoMessage}</h3>
-        <h3>Menu</h3>
+        {/* //categories accourding */}
 
-        <ul>
+        {categories.map((category)=>{ return <ResturantCategory data={category?.card?.card} key={category.card.card.title}/>})}
 
-          {itemCards?.map((item) => (
-            <li key={item.card.info.id}>{item.card.info.name} - ₹ {(item.card.info.price / 100) || 299}</li>
-          ))}
+       
 
-        </ul>
+     
 
 
 
