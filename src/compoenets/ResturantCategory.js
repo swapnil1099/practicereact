@@ -1,13 +1,13 @@
-import { useState } from "react";
+// import { useState } from "react";
 import ItemList from "./ItemList";
 
-const ResturantCategory = ({data}) => {
+const ResturantCategory = ({data,showItems,setShowIndex}) => {
     
-    const [showItems,setShowItem]=useState(false);
+    // const [showItems,setShowItem]=useState(false);
 
     const handelClick=()=>{
-        setShowItem(!showItems);
-    }
+        setShowIndex();
+    };
   return (
     <div className="w-6/12 mx-auto my-4 bg-gray-50 shadow-lg p-4">
     <div className="flex justify-between cursor-pointer"
@@ -21,7 +21,9 @@ const ResturantCategory = ({data}) => {
       {/* Header and accouridng body i need to write  */}
       {/* <h1>{data}</h1> */}
        {
-        showItems && <ItemList items={data.itemCards}/>
+        showItems && <ItemList items={data.itemCards}
+
+        />
        }
     </div>
   )

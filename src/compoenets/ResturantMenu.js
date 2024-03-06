@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import useResturantMenu from '../utils/useResturantMenu';
 import Shimmer from './Shimmer';
 import { useParams } from 'react-router';
@@ -7,7 +7,7 @@ const ResturantMenu = () => {
   //const [resinfo,stateresinfo]=useState([]);
 
   const { resId } = useParams();
-
+  const [showIndex, setShowIndex] = useState(null);
 
 
   const resinfo = useResturantMenu(resId);
@@ -19,16 +19,16 @@ const ResturantMenu = () => {
   if (resinfo.length !== 0) {
     var { name, costForTwoMessage, cuisines } = resinfo?.data?.cards[2]?.card?.card?.info;
     // var { itemCards } = resinfo.data.cards[5].groupedCard?.cardGroupMap?.REGULAR.cards[1]?.card?.card;
-  //  console.log(resinfo.data.cards[5].groupedCard?.cardGroupMap?.REGULAR.cards)
-  var categories=resinfo.data.cards[5].groupedCard?.cardGroupMap?.REGULAR.cards.filter((c)=>c.card?.["card"]?.["@type"]==="type.googleapis.com/swiggy.presentation.food.v2.ItemCategory")
+    //  console.log(resinfo.data.cards[5].groupedCard?.cardGroupMap?.REGULAR.cards)
+    var categories = resinfo.data.cards[5].groupedCard?.cardGroupMap?.REGULAR.cards.filter((c) => c.card?.["card"]?.["@type"] === "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory")
 
-  // console.log(categories)
-   
+    // console.log(categories)
+
 
   }
-  
-  
- 
+
+
+
 
 
 
@@ -46,11 +46,19 @@ const ResturantMenu = () => {
 
         {/* //categories accourding */}
 
-        {categories.map((category)=>{ return <ResturantCategory data={category?.card?.card} key={category.card.card.title}/>})}
+        {categories.map((category, index) => {
+          return <ResturantCategory data={category?.card?.card}
+            key={category.card.card.title}
+            showItems={index === showIndex ? true : false}
 
-       
+            setShowIndex = {()=>setShowIndex(index)}
+        />
+        
+        })}
 
-     
+
+
+
 
 
 
