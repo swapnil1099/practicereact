@@ -21,7 +21,7 @@ const Header = () => {
           <li className="px-4 font-bold"><Link to={"/about"}>About</Link></li>
           <li className="px-4 font-bold"> <Link to={"/Contact"}>Contact</Link></li>
           <li className="px-4 font-bold"><Link to={"/grocery"}>Grocary</Link></li>
-          <li className="px-4 font-bold ">{"🛒"} {cartItems.length}</li>
+          <li className="px-4 font-bold "><Link to={"/cart"}>{"🛒"} {cartItems.length}</Link></li>
           <button className="px-4 font-bold" onClick={() => (
             message === loggedInUser ? setMessage("logout") : setMessage(loggedInUser)
           )}>{message}</button>

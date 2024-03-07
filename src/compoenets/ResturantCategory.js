@@ -2,7 +2,7 @@
 import ItemList from "./ItemList";
 
 const ResturantCategory = ({data,showItems,setShowIndex}) => {
-    
+    // console.log(data.itemCards);
     // const [showItems,setShowItem]=useState(false);
 
     const handelClick=()=>{

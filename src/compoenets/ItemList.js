@@ -8,7 +8,7 @@ const ItemList = ({ items }) => {
     const dispatch=useDispatch();
     // console.log(items)
   const handleaddItem=(item)=>{
-   dispatch(addItems(item.card.info.name));
+   dispatch(addItems(item));
   }
     return (
         <div>
