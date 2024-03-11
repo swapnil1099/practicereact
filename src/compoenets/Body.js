@@ -29,7 +29,7 @@ const Body = () => {
   const fetchData = async () => {
     // const data = await fetch("https://www.swiggy.com/mapi/restaurants/list/v5?offset=0&is-seo-homepage-enabled=true&lat=18.5504303&lng=73.8567437")
     const data = await fetch(
-      "https://www.swiggy.com/mapi/homepage/getCards?lat=18.5142377&lng=73.9256948",
+      "https://www.swiggy.com/mapi/homepage/getCards?lat=18.5642377&lng=73.9256948",
     );
     const json = await data.json();
     setList(
